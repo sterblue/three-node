@@ -11,6 +11,7 @@ try {
 
 const _window = require( '../build/window.js' );
 var fs = require( 'fs' );
+const fsExtra = require( 'fs-extra' );
 THREE = require( '../build/three.js' );
 const namesGlobal = Object.keys( _window ).toString().split( "," );
 
@@ -268,6 +269,7 @@ function convert( path, exampleDependencies, ignoreList, isNode ) {
 
 	if ( ! isNode ) {
 
+		fsExtra.ensureFileSync( srcFolderLocal + path );
 		fs.writeFileSync( srcFolderLocal + path, contents, 'utf-8' );
 
 	}
@@ -389,10 +391,12 @@ function convert( path, exampleDependencies, ignoreList, isNode ) {
 
 		if ( isNode ) {
 
+			fsExtra.ensureFileSync( dstFolderNode + path );
 			fs.writeFileSync( dstFolderNode + path, output, 'utf-8' );
 
 		} else {
 
+			fsExtra.ensureFileSync( dstFolder + path );
 			fs.writeFileSync( dstFolder + path, output, 'utf-8' );
 
 		}
