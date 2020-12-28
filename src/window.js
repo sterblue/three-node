@@ -17,23 +17,6 @@ const jsdom = new JSDOM(
 );
 
 const window = jsdom.window;
-window.createImageBitmap = () => {
-
-	console.error( "jsdom window.createImageBitmap unsupported" );
-
-};
-
-window.AudioContext = class AudioContext {
-
-	constructor() {
-
-		console.error( "jsdom window.AudioContext unsupported" );
-
-	}
-
-};
-
-
 const Blob = window.Blob;
 const atob = window.atob;
 const DOMParser = window.DOMParser;
@@ -64,7 +47,6 @@ const HTMLImageElement = window.HTMLImageElement;
 const HTMLCanvasElement = window.HTMLCanvasElement;
 const ImageBitmap = window.ImageBitmap; // Unsupported (undefined)
 const createImageBitmap = window.createImageBitmap; // Unsupported
-
 const self = window.self;
 
 export {
