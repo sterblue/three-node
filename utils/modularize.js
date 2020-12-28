@@ -1,6 +1,6 @@
 try {
 
-	require( './window.js' );
+	require( '../build/window.js' );
 
 } catch {
 
@@ -9,12 +9,14 @@ try {
 
 }
 
-const _window = require( './window.js' );
+const _window = require( '../build/window.js' );
 var fs = require( 'fs' );
 THREE = require( '../build/three.js' );
 const namesGlobal = Object.keys( _window ).toString().split( "," );
 
-var srcFolder = __dirname + '/../examples/js/';
+var srcFolderLocal = __dirname + '/../examples/js/';
+var srcFolder = require( "path" ).resolve( require.resolve( "three" ), "../../examples/js" ) + "/";
+// console.log(`srcFolder = ${srcFolder}`)
 var dstFolder = __dirname + '/../examples/jsm/';
 var dstFolderNode = __dirname + '/../examples/node/';
 
@@ -263,6 +265,12 @@ for ( var i = 0; i < files.length; i ++ ) {
 function convert( path, exampleDependencies, ignoreList, isNode ) {
 
 	var contents = fs.readFileSync( srcFolder + path, 'utf8' );
+
+	if ( ! isNode ) {
+
+		fs.writeFileSync( srcFolderLocal + path, contents, 'utf-8' );
+
+	}
 
 	var classNames = [];
 	var coreDependencies = {};

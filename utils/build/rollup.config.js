@@ -2,7 +2,7 @@ import babel from "@rollup/plugin-babel";
 import inject from '@rollup/plugin-inject';
 import { terser } from "rollup-plugin-terser";
 import * as Window from '../../src/window.js';
-import * as THREE from '../../src/Three.js';
+import * as THREE from "three";
 import path from "path";
 
 if ( String.prototype.replaceAll === undefined ) {
@@ -284,6 +284,29 @@ function header() {
 
 }
 
+function addWindowGlobals() {
+
+	return {
+
+		transform( code, id ) {
+
+			if ( id.endsWith( "/Three.js" ) ) {
+
+				return `import {${namesGlobal.filter( value => ! threeExports.includes( value ) ).map( value => " " + value ).toString()} } from "${require.resolve( "../../src/window.js" )}";\n${code}\nexport {${namesGlobal.filter( value => ! threeExports.includes( value ) ).map( value => " " + value ).toString()} };`;
+
+			} else {
+
+				return null;
+
+			}
+
+
+		}
+
+	};
+
+}
+
 function polyfills() {
 
 	return {
@@ -332,6 +355,9 @@ const babelrc = {
 	]
 };
 
+console.log( "three path =" + require.resolve( "three" ) );
+console.log( "examples path =" + path.resolve( require.resolve( "three" ), "../../examples/js" ) );
+
 export default [
 	{
 		input: 'src/window.js',
@@ -339,77 +365,78 @@ export default [
 			{
 				format: 'umd',
 				name: 'THREE',
-				file: 'utils/window.js'
+				file: 'build/window.js'
 			}
 		]
 	},
+	// {
+	// 	input: require.resolve( "three/src/Three.js" ),
+	// 	plugins: [
+	// 		polyfills(),
+	// 		addons(),
+	// 		glconstants(),
+	// 		glsl(),
+	// 		babel( {
+	// 			babelHelpers: 'bundled',
+	// 			compact: false,
+	// 			babelrc: false,
+	// 			...babelrc
+	// 		} ),
+	// 		babelCleanup(),
+	// 		header()
+	// 	],
+	// 	output: [
+	// 		{
+	// 			format: 'umd',
+	// 			name: 'THREE',
+	// 			file: 'build/three.js',
+	// 			indent: '\t'
+	// 		}
+	// 	]
+	// },
+	// {
+	// 	input: require.resolve( "three/src/Three.js" ),
+	// 	plugins: [
+	// 		polyfills(),
+	// 		addons(),
+	// 		glconstants(),
+	// 		glsl(),
+	// 		babel( {
+	// 			babelHelpers: 'bundled',
+	// 			babelrc: false,
+	// 			...babelrc
+	// 		} ),
+	// 		babelCleanup(),
+	// 		terser(),
+	// 		header()
+	// 	],
+	// 	output: [
+	// 		{
+	// 			format: 'umd',
+	// 			name: 'THREE',
+	// 			file: 'build/three.min.js'
+	// 		}
+	// 	]
+	// },
+	// {
+	// 	input: require.resolve( "three/src/Three.js" ),
+	// 	plugins: [
+	// 		addons(),
+	// 		glconstants(),
+	// 		glsl(),
+	// 		header()
+	// 	],
+	// 	output: [
+	// 		{
+	// 			format: 'esm',
+	// 			file: 'build/three.module.js'
+	// 		}
+	// 	]
+	// },
 	{
 		input: require.resolve( "three/src/Three.js" ),
 		plugins: [
-			polyfills(),
-			addons(),
-			glconstants(),
-			glsl(),
-			babel( {
-				babelHelpers: 'bundled',
-				compact: false,
-				babelrc: false,
-				...babelrc
-			} ),
-			babelCleanup(),
-			header()
-		],
-		output: [
-			{
-				format: 'umd',
-				name: 'THREE',
-				file: 'build/three.js',
-				indent: '\t'
-			}
-		]
-	},
-	{
-		input: require.resolve( "three/src/Three.js" ),
-		plugins: [
-			polyfills(),
-			addons(),
-			glconstants(),
-			glsl(),
-			babel( {
-				babelHelpers: 'bundled',
-				babelrc: false,
-				...babelrc
-			} ),
-			babelCleanup(),
-			terser(),
-			header()
-		],
-		output: [
-			{
-				format: 'umd',
-				name: 'THREE',
-				file: 'build/three.min.js'
-			}
-		]
-	},
-	{
-		input: require.resolve( "three/src/Three.js" ),
-		plugins: [
-			addons(),
-			glconstants(),
-			glsl(),
-			header()
-		],
-		output: [
-			{
-				format: 'esm',
-				file: 'build/three.module.js'
-			}
-		]
-	},
-	{
-		input: require.resolve( "three/src/Three.js" ),
-		plugins: [
+			addWindowGlobals(),
 			inject( configInject ),
 			addons(),
 			glconstants(),
@@ -418,11 +445,10 @@ export default [
 		],
 		output: [
 			{
-				intro: `import { ${namesGlobal.filter( value => ! threeExports.includes( value ) ).map( value => " " + value ).toString()} } from "${require.resolve( "../../src/window.js" )}"`,
 				format: 'esm',
 				file: 'build/three.module.node.js',
-				outro: "export {" + namesGlobal.filter( value => ! threeExports.includes( value ) ).map( value => " " + value ).toString() + " };"
 			}
-		]
+		],
+		external: [ "jsdom" ]
 	}
 ];
