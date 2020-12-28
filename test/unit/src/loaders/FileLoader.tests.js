@@ -1,6 +1,6 @@
 /* global QUnit */
 
-import { FileLoader } from '../../../../src/loaders/FileLoader';
+import { FileLoader } from '../../../../build/three.module.node';
 
 export default QUnit.module( 'Loaders', () => {
 
@@ -275,36 +275,6 @@ export default QUnit.module( 'Loaders', () => {
 
 				}
 			);
-
-		} );
-
-		QUnit.todo( "setPath", ( assert ) => {
-
-			assert.ok( false, "everything's gonna be alright" );
-
-		} );
-
-		QUnit.todo( "setResponseType", ( assert ) => {
-
-			assert.ok( false, "everything's gonna be alright" );
-
-		} );
-
-		QUnit.todo( "setWithCredentials", ( assert ) => {
-
-			assert.ok( false, "everything's gonna be alright" );
-
-		} );
-
-		QUnit.todo( "setMimeType", ( assert ) => {
-
-			assert.ok( false, "everything's gonna be alright" );
-
-		} );
-
-		QUnit.todo( "setRequestHeader", ( assert ) => {
-
-			assert.ok( false, "everything's gonna be alright" );
 
 		} );
 

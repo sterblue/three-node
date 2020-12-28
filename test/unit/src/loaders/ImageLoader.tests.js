@@ -1,6 +1,6 @@
 /* global QUnit */
 
-import { ImageLoader } from '../../../../src/loaders/ImageLoader';
+import { ImageLoader } from '../../../../build/three.module.node';
 
 export default QUnit.module( 'Loaders', () => {
 
@@ -127,17 +127,6 @@ export default QUnit.module( 'Loaders', () => {
 
 		} );
 
-		QUnit.todo( "setCrossOrigin", ( assert ) => {
-
-			assert.ok( false, "everything's gonna be alright" );
-
-		} );
-
-		QUnit.todo( "setPath", ( assert ) => {
-
-			assert.ok( false, "everything's gonna be alright" );
-
-		} );
 
 	} );
 
