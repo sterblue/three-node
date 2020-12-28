@@ -446,5 +446,32 @@ export default [
 				file: 'build/three.module.node.js',
 			}
 		]
+	},
+	{
+		input: require.resolve( "three/src/Three.js" ),
+		plugins: [
+			addWindowGlobals(),
+			inject( configInject ),
+			polyfills(),
+			addons(),
+			glconstants(),
+			glsl(),
+			babel( {
+				babelHelpers: 'bundled',
+				compact: false,
+				babelrc: false,
+				...babelrc
+			} ),
+			babelCleanup(),
+			header()
+		],
+		output: [
+			{
+				format: 'umd',
+				name: 'THREE',
+				file: 'build/three.node.js',
+				indent: '\t'
+			}
+		]
 	}
 ];
