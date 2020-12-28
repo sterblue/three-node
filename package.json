@@ -14,9 +14,11 @@
     "build/three.min.js",
     "build/three.module.js",
     "build/three.module.node.js",
+    "build/three.node.js",
     "examples/js",
     "examples/jsm",
-    "examples/node",
+    "examples/node-js",
+    "examples/node-jsm",
     "examples/fonts",
     "LICENSE",
     "package.json",
@@ -127,7 +129,9 @@
       "README.md",
       "build/three.js",
       "build/three.min.js",
-      "build/three.module.js"
+      "build/three.module.js",
+      "build/three.module.node.js",
+      "build/three.node.js"
     ],
     "directories": {}
   }
