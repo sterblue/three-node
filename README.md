@@ -1,6 +1,6 @@
 # three-universal
 
-Versions of Three.js compatible with Browsers, NodeJS, React Native Threads, etc by using JSDOM.
+Versions of [Three.js](https://github.com/mrdoob/three.js) compatible with Browsers, NodeJS, React Native Threads, etc by using JSDOM.
 This package provides the original builds and examples of three.js along with one node specific
 build and node specific examples.
 
