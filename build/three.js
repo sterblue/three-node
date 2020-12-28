@@ -27474,6 +27474,7 @@
 			var scope = this;
 			var images = [];
 			var texture = new CompressedTexture();
+			texture.image = images;
 			var loader = new FileLoader(this.manager);
 			loader.setPath(this.path);
 			loader.setResponseType('arraybuffer');
@@ -27494,7 +27495,6 @@
 
 					if (loaded === 6) {
 						if (texDatas.mipmapCount === 1) texture.minFilter = LinearFilter;
-						texture.image = images;
 						texture.format = texDatas.format;
 						texture.needsUpdate = true;
 						if (onLoad) onLoad(texture);
@@ -27526,8 +27526,6 @@
 								images[f].height = texDatas.height;
 							}
 						}
-
-						texture.image = images;
 					} else {
 						texture.image.width = texDatas.width;
 						texture.image.height = texDatas.height;
