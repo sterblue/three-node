@@ -366,70 +366,70 @@ export default [
 			}
 		]
 	},
-	// {
-	// 	input: require.resolve( "three/src/Three.js" ),
-	// 	plugins: [
-	// 		polyfills(),
-	// 		addons(),
-	// 		glconstants(),
-	// 		glsl(),
-	// 		babel( {
-	// 			babelHelpers: 'bundled',
-	// 			compact: false,
-	// 			babelrc: false,
-	// 			...babelrc
-	// 		} ),
-	// 		babelCleanup(),
-	// 		header()
-	// 	],
-	// 	output: [
-	// 		{
-	// 			format: 'umd',
-	// 			name: 'THREE',
-	// 			file: 'build/three.js',
-	// 			indent: '\t'
-	// 		}
-	// 	]
-	// },
-	// {
-	// 	input: require.resolve( "three/src/Three.js" ),
-	// 	plugins: [
-	// 		polyfills(),
-	// 		addons(),
-	// 		glconstants(),
-	// 		glsl(),
-	// 		babel( {
-	// 			babelHelpers: 'bundled',
-	// 			babelrc: false,
-	// 			...babelrc
-	// 		} ),
-	// 		babelCleanup(),
-	// 		terser(),
-	// 		header()
-	// 	],
-	// 	output: [
-	// 		{
-	// 			format: 'umd',
-	// 			name: 'THREE',
-	// 			file: 'build/three.min.js'
-	// 		}
-	// 	]
-	// },
-	// {
-	// 	input: require.resolve( "three/src/Three.js" ),
-	// 	plugins: [
-	// 		addons(),
-	// 		glconstants(),
-	// 		glsl(),
-	// 		header()
-	// 	],
-	// 	output: [
-	// 		{
-	// 			format: 'esm',
-	// 			file: 'build/three.module.js'
-	// 		}
-	// 	]
-	// },
+	{
+		input: require.resolve( "three/src/Three.js" ),
+		plugins: [
+			polyfills(),
+			addons(),
+			glconstants(),
+			glsl(),
+			babel( {
+				babelHelpers: 'bundled',
+				compact: false,
+				babelrc: false,
+				...babelrc
+			} ),
+			babelCleanup(),
+			header()
+		],
+		output: [
+			{
+				format: 'umd',
+				name: 'THREE',
+				file: 'build/three.js',
+				indent: '\t'
+			}
+		]
+	},
+	{
+		input: require.resolve( "three/src/Three.js" ),
+		plugins: [
+			polyfills(),
+			addons(),
+			glconstants(),
+			glsl(),
+			babel( {
+				babelHelpers: 'bundled',
+				babelrc: false,
+				...babelrc
+			} ),
+			babelCleanup(),
+			terser(),
+			header()
+		],
+		output: [
+			{
+				format: 'umd',
+				name: 'THREE',
+				file: 'build/three.min.js'
+			}
+		]
+	},
+	{
+		input: require.resolve( "three/src/Three.js" ),
+		plugins: [
+			addons(),
+			glconstants(),
+			glsl(),
+			header()
+		],
+		output: [
+			{
+				format: 'esm',
+				file: 'build/three.module.js'
+			}
+		]
+	},
 	{
 		input: require.resolve( "three/src/Three.js" ),
 		plugins: [
