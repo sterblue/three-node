@@ -19,7 +19,8 @@ var srcFolderLocal = __dirname + '/../examples/js/';
 var srcFolder = require( "path" ).resolve( require.resolve( "three" ), "../../examples/js" ) + "/";
 // console.log(`srcFolder = ${srcFolder}`)
 var dstFolder = __dirname + '/../examples/jsm/';
-var dstFolderNode = __dirname + '/../examples/node/';
+var dstFolderNode = __dirname + '/../examples/node-jsm/';
+var dstFolderNodeCommonJs = __dirname + '/../examples/node-js/';
 
 var files = [
 	{ path: 'animation/AnimationClipCreator.js', dependencies: [], ignoreList: [] },
@@ -246,14 +247,17 @@ var files = [
 for ( var i = 0; i < files.length; i ++ ) {
 
 	var file = files[ i ];
+	// Make browser jsm from browser js
 	convert( file.path, file.dependencies, file.ignoreList, false );
 
 	if ( file.nodeVersion ) {
 
+		// Make node jsm from browser js
 		convert( file.nodeVersion, file.dependencies, file.ignoreList, true );
 
 	} else {
 
+		// Make node jsm from browser js
 		convert( file.path, file.dependencies, file.ignoreList, true );
 
 	}
@@ -335,6 +339,7 @@ function convert( path, exampleDependencies, ignoreList, isNode ) {
 		.toString();
 
 	var imports = [];
+	var importsCommonJs = [];
 
 	// compute path prefix for imports/exports
 
@@ -355,12 +360,14 @@ function convert( path, exampleDependencies, ignoreList, isNode ) {
 			if ( domGlobals ) {
 
 				imports.push( `import {${keys + "," + domGlobals}\n} from "${pathPrefix}../../build/three.module.node.js";` );
+				importsCommonJs.push( `const {${keys + "," + domGlobals}\n} = require( "${pathPrefix}../../build/three.node.js" );` );
 
 				// 	imports.push( `import {${domGlobals}\n} from "${pathPrefix}../../src/window.js";` );
 
 			} else {
 
 				imports.push( `import {${keys}\n} from "${pathPrefix}../../build/three.module.node.js";` );
+				importsCommonJs.push( `const {${keys}\n} = require( "${pathPrefix}../../build/three.node.js" );` );
 
 			}
 
@@ -377,14 +384,18 @@ function convert( path, exampleDependencies, ignoreList, isNode ) {
 	for ( var dependency of exampleDependencies ) {
 
 		imports.push( `import { ${dependency.name} } from "${pathPrefix}${dependency.path}";` );
+		importsCommonJs.push( `const { ${dependency.name} } = require( "${pathPrefix}${dependency.path}" );` );
 
 	}
 
 	var output = '';
+	var outputCommonJs = '';
 
 	if ( imports.length > 0 ) output += imports.join( '\n' ) + '\n\n';
+	if ( importsCommonJs.length > 0 ) outputCommonJs += importsCommonJs.join( '\n' ) + '\n\n';
 
 	output += contents + `\nexport { ${classNames.join( ', ' )} };\n`;
+	outputCommonJs += contents + `\nmodule.exports = { ${classNames.join( ', ' )} };\n`;
 
 	// console.log( output );
 	if ( keys ) {
@@ -393,6 +404,8 @@ function convert( path, exampleDependencies, ignoreList, isNode ) {
 
 			fsExtra.ensureFileSync( dstFolderNode + path );
 			fs.writeFileSync( dstFolderNode + path, output, 'utf-8' );
+			fsExtra.ensureFileSync( dstFolderNodeCommonJs + path );
+			fs.writeFileSync( dstFolderNodeCommonJs + path, outputCommonJs, 'utf-8' );
 
 		} else {
 
