@@ -47,7 +47,7 @@ Here we can use the `file` protocol to load a local file, and fs-extra's `writeJ
 to load a remote image.
 
 ```javascript
-import { GLTFExporter } from "three-universal/examples/node/exporters/GLTFExporter";
+import { GLTFExporter } from "three-universal/examples/node-jsm/exporters/GLTFExporter";
 import { BoxBufferGeometry, MeshBasicMaterial, Mesh, Scene, TextureLoader } from "three-universal/build/three.module.node";
 import { writeJson } from "fs-extra";
 
