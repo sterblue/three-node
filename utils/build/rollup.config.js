@@ -355,9 +355,6 @@ const babelrc = {
 	]
 };
 
-console.log( "three path =" + require.resolve( "three" ) );
-console.log( "examples path =" + path.resolve( require.resolve( "three" ), "../../examples/js" ) );
-
 export default [
 	{
 		input: 'src/window.js',
@@ -448,7 +445,6 @@ export default [
 				format: 'esm',
 				file: 'build/three.module.node.js',
 			}
-		],
-		external: [ "jsdom" ]
+		]
 	}
 ];
