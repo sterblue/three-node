@@ -1,5 +1,5 @@
 {
-  "name": "three-node",
+  "name": "three-universal",
   "version": "0.123.0",
   "description": "JavaScript 3D library",
   "main": "build/three.js",
@@ -7,7 +7,7 @@
   "types": "src/Three.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sterblue/three-node"
+    "url": "https://github.com/sterblue/three-universal"
   },
   "files": [
     "build/three.js",
@@ -79,7 +79,7 @@
   "author": "sterblue",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sterblue/three-node/issues"
+    "url": "https://github.com/sterblue/three-universal/issues"
   },
   "homepage": "https://threejs.org/",
   "devDependencies": {
