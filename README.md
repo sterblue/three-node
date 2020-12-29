@@ -124,8 +124,6 @@ When there is a new release of three at https://www.npmjs.com/package/three :
 Tests can be done in only one environment, NodeJS. For in-Browser tests, please refer to the original repository.
 First run `npm install` in `./test` to install the required testing dependencies.
 
-To run unit tests on NodeJS: 
-`npm run test-unit-node`
+To run unit tests on NodeJS: `npm run test-unit-node`
 
-To run end to end tests on NodeJS: 
-`npm run test-e2e-node`
+To run end to end tests on NodeJS: `npm run test-e2e-node`
