@@ -105,7 +105,7 @@ List of currently unsupported DOM objects used by Three.js:
 
 This development is open-sourced by [Sterblue](https://www.sterblue.com/). 
 
-Join us at ![Sterblue Labs](https://labs.sterblue.com/)!
+Join us at [Sterblue Labs](https://labs.sterblue.com/)!
 
 ![Sterblue Labs](https://labs.sterblue.com/logos/Sterblue%20Labs-400w.png)!
 
