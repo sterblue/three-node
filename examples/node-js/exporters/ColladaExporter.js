@@ -309,7 +309,7 @@ ColladaExporter.prototype = {
 
 				}
 
-				gnode += `</mesh></geometry>`;
+				gnode += '</mesh></geometry>';
 
 				libraryGeometries.push( gnode );
 
@@ -408,10 +408,10 @@ ColladaExporter.prototype = {
 				if ( m.transparent === true ) {
 
 					transparencyNode +=
-						`<transparent>` +
+						'<transparent>' +
 						(
 							m.map ?
-								`<texture texture="diffuse-sampler"></texture>` :
+								'<texture texture="diffuse-sampler"></texture>' :
 								'<float>1</float>'
 						) +
 						'</transparent>';
@@ -528,7 +528,7 @@ ColladaExporter.prototype = {
 
 					(
 						m.side === DoubleSide ?
-							`<extra><technique profile="THREEJS"><double_sided sid="double_sided" type="int">1</double_sided></technique></extra>` :
+							'<extra><technique profile="THREEJS"><double_sided sid="double_sided" type="int">1</double_sided></technique></extra>' :
 							''
 					) +
 

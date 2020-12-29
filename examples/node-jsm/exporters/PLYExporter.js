@@ -198,7 +198,7 @@ PLYExporter.prototype = {
 			// faces
 			header +=
 				`element face ${faceCount}\n` +
-				`property list uchar int vertex_index\n`;
+				'property list uchar int vertex_index\n';
 
 		}
 

@@ -53,7 +53,7 @@ var files = [
 
 	{ path: 'exporters/ColladaExporter.js', dependencies: [], ignoreList: [] },
 	{ path: 'exporters/DRACOExporter.js', dependencies: [], ignoreList: [ 'Geometry' ] },
-	{ path: 'exporters/GLTFExporter.js', dependencies: [], ignoreList: [ 'AnimationClip', 'Camera', 'Geometry', 'Material', 'Mesh', 'Object3D', 'Scenes', 'ShaderMaterial', 'Matrix4' ] },
+	{ path: 'exporters/GLTFExporter.js', dependencies: [], ignoreList: [ 'AnimationClip', 'Camera', 'Geometry', 'Material', 'Mesh', 'Object3D', 'Scenes', 'ShaderMaterial' ] },
 	{ path: 'exporters/MMDExporter.js', dependencies: [ { name: 'MMDParser', path: 'libs/mmdparser.module.js' } ], ignoreList: [] },
 	{ path: 'exporters/OBJExporter.js', dependencies: [], ignoreList: [] },
 	{ path: 'exporters/PLYExporter.js', dependencies: [], ignoreList: [] },
@@ -238,7 +238,6 @@ var files = [
 	{ path: 'utils/SceneUtils.js', dependencies: [], ignoreList: [] },
 	{ path: 'utils/ShadowMapViewer.js', dependencies: [ { name: 'UnpackDepthRGBAShader', path: 'shaders/UnpackDepthRGBAShader.js' } ], ignoreList: [] },
 	{ path: 'utils/SkeletonUtils.js', dependencies: [], ignoreList: [] },
-	{ path: 'utils/TypedArrayUtils.js', dependencies: [], ignoreList: [] },
 	{ path: 'utils/UVsDebug.js', dependencies: [], ignoreList: [ 'SphereBufferGeometry' ] },
 
 	{ path: 'WebGL.js', dependencies: [], ignoreList: [] },

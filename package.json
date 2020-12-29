@@ -1,6 +1,6 @@
 {
   "name": "three-universal",
-  "version": "0.123.0-alpha.0",
+  "version": "0.124.0",
   "description": "JavaScript 3D library",
   "main": "build/three.js",
   "module": "build/three.module.node.js",
@@ -107,7 +107,7 @@
     "rollup": "^2.33.3",
     "rollup-plugin-terser": "^7.0.2",
     "servez": "^1.11.0",
-    "three": "0.123.0",
+    "three": "0.124.0",
     "typescript": "^4.1.2"
   },
   "peerDependencies": {

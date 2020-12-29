@@ -530,7 +530,7 @@ var GLTFLoader = ( function () {
 				break;
 
 			default:
-				throw new Error( 'THREE.GLTFLoader: Unexpected light type, "' + lightDef.type + '".' );
+				throw new Error( 'THREE.GLTFLoader: Unexpected light type: ' + lightDef.type );
 
 		}
 
@@ -2916,11 +2916,13 @@ var GLTFLoader = ( function () {
 	/** When Object3D instances are targeted by animation, they need unique names. */
 	GLTFParser.prototype.createUniqueName = function ( originalName ) {
 
-		var name = PropertyBinding.sanitizeNodeName( originalName || '' );
+		var sanitizedName = PropertyBinding.sanitizeNodeName( originalName || '' );
+
+		var name = sanitizedName;
 
 		for ( var i = 1; this.nodeNamesUsed[ name ]; ++ i ) {
 
-			name = originalName + '_' + i;
+			name = sanitizedName + '_' + i;
 
 		}
 

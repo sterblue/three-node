@@ -82,8 +82,8 @@ var SVGRenderer = function () {
 
 		switch ( quality ) {
 
-			case "high": _quality = 1; break;
-			case "low": _quality = 0; break;
+			case 'high': _quality = 1; break;
+			case 'low': _quality = 0; break;
 
 		}
 
@@ -377,7 +377,7 @@ var SVGRenderer = function () {
 		}
 
 		var path = 'M' + convert( v1.x - scaleX * 0.5 ) + ',' + convert( v1.y - scaleY * 0.5 ) + 'h' + convert( scaleX ) + 'v' + convert( scaleY ) + 'h' + convert( - scaleX ) + 'z';
-		var style = "";
+		var style = '';
 
 		if ( material.isSpriteMaterial || material.isPointsMaterial ) {
 
@@ -399,7 +399,7 @@ var SVGRenderer = function () {
 
 			if ( material.isLineDashedMaterial ) {
 
-				style = style + ';stroke-dasharray:' + material.dashSize + "," + material.gapSize;
+				style = style + ';stroke-dasharray:' + material.dashSize + ',' + material.gapSize;
 
 			}
 

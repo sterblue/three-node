@@ -3996,6 +3996,7 @@ ColladaLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 		setupKinematics();
 
 		var scene = parseScene( getElementsByTagName( collada, 'scene' )[ 0 ] );
+		scene.animations = animations;
 
 		if ( asset.upAxis === 'Z_UP' ) {
 
@@ -4006,7 +4007,12 @@ ColladaLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 		scene.scale.multiplyScalar( asset.unit );
 
 		return {
-			animations: animations,
+			get animations() {
+
+				console.warn( 'THREE.ColladaLoader: Please access animations over scene.animations now.' );
+				return animations;
+
+			},
 			kinematics: kinematics,
 			library: library,
 			scene: scene

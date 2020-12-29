@@ -14,11 +14,11 @@ var SavePass = function ( renderTarget ) {
 	Pass.call( this );
 
 	if ( CopyShader === undefined )
-		console.error( "SavePass relies on CopyShader" );
+		console.error( 'THREE.SavePass relies on CopyShader' );
 
 	var shader = CopyShader;
 
-	this.textureID = "tDiffuse";
+	this.textureID = 'tDiffuse';
 
 	this.uniforms = UniformsUtils.clone( shader.uniforms );
 
@@ -35,7 +35,7 @@ var SavePass = function ( renderTarget ) {
 	if ( this.renderTarget === undefined ) {
 
 		this.renderTarget = new WebGLRenderTarget( window.innerWidth, window.innerHeight, { minFilter: LinearFilter, magFilter: LinearFilter, format: RGBFormat } );
-		this.renderTarget.texture.name = "SavePass.rt";
+		this.renderTarget.texture.name = 'SavePass.rt';
 
 	}
 
