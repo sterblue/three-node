@@ -79,7 +79,7 @@ textureLoader.load( `file://path-to-my-image.jpg`, function ( texture ) {
 } );
 ```
 
-## Unsupported DOM elements
+## Unsupported DOM interfaces
 
 So far, JSDOM doesn't support every object of the native DOM API. If one of the utils you intend to 
 run transitively uses one object in the list below, you might encounter non-three.js related issues 
@@ -118,3 +118,13 @@ When there is a new release of three at https://www.npmjs.com/package/three :
   - Update the version this package in this `package.json`
   - `npm install && npm run build && npm run test-e2e-node`
   - `npm publish`
+
+## Test
+
+Tests can be done in only one environment, NodeJS. For in-Browser tests, please refer to the original repository.
+First run `npm install` in `./test` to install the required testing dependencies.
+To run unit tests on NodeJS: 
+`npm run test-unit-node`
+
+To run end to end tests on NodeJS: 
+`npm run test-e2e-node`
