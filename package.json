@@ -15,6 +15,11 @@
     "build/three.module.js",
     "build/three.module.node.js",
     "build/three.node.js",
+    "build/three.d.ts",
+    "build/three.min.d.ts",
+    "build/three.module.d.ts",
+    "build/three.module.node.d.ts",
+    "build/three.node.d.ts",
     "examples/js",
     "examples/jsm",
     "examples/node-js",
@@ -131,7 +136,12 @@
       "build/three.min.js",
       "build/three.module.js",
       "build/three.module.node.js",
-      "build/three.node.js"
+      "build/three.node.js",
+      "build/three.d.ts",
+      "build/three.min.d.ts",
+      "build/three.module.d.ts",
+      "build/three.module.node.d.ts",
+      "build/three.node.d.ts"
     ],
     "directories": {}
   }
